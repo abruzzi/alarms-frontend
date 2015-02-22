@@ -1,0 +1,62 @@
+[
+	{
+		"node": "VIQ002",
+		"summary": "heartbeat failure",
+		"occurrence": "2/12/2015 01:23 AM",
+		"proiority": "critical"
+	},
+	{
+		"node": "VIQ002",
+		"summary": "packages are rejected",
+		"occurrence": "2/12/2015 01:22 AM",
+		"proiority": "major"
+	},
+	{
+		"node": "VIQ002",
+		"summary": "connection cannot be established",
+		"occurrence": "2/11/2015 01:23 AM",
+		"proiority": "medium"
+	},
+	{
+		"node": "VIQ001",
+		"summary": "packages are rejected",
+		"occurrence": "2/11/2015 01:23 AM",
+		"proiority": "warning"
+	},
+	{
+		"node": "VIQ001",
+		"summary": "connection cannot be established",
+		"occurrence": "2/09/2015 01:23 AM",
+		"proiority": "medium"
+	},
+	{
+		"node": "VIQ001",
+		"summary": "packages are rejected",
+		"occurrence": "2/10/2015 01:23 AM",
+		"proiority": "warning"
+	},
+		{
+		"node": "VIQ002",
+		"summary": "packages are rejected",
+		"occurrence": "1/12/2015 01:22 AM",
+		"proiority": "major"
+	},
+	{
+		"node": "VIQ002",
+		"summary": "connection cannot be established",
+		"occurrence": "1/11/2015 01:23 AM",
+		"proiority": "medium"
+	},
+	{
+		"node": "VIQ001",
+		"summary": "packages are rejected",
+		"occurrence": "2/01/2015 05:23 AM",
+		"proiority": "warning"
+	},
+	{
+		"node": "VIQ001",
+		"summary": "health check status unknown",
+		"occurrence": "2/02/2015 03:23 AM",
+		"proiority": "indeterminate"
+	}
+]

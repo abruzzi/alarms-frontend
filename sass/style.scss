@@ -3,4 +3,77 @@
 
 body {
 	font-size: 62.5%;
+	font-family: "Open Sans", serif;
+	text-align: center;
+}
+
+.critical {
+	background-color: red;
+	color: white;
+}
+
+.major {
+	background-color: orangered;
+	color: white;
+}
+
+.medium {
+	background-color: orange;
+	color: white;
+}
+
+.warning {
+	background-color: #2C75DB;
+	color: white;
+}
+
+.indeterminate {
+	background-color: #29D4BA;
+	color: white;
+}
+
+.container {
+	padding: 1em 0;
+	width: 800px;
+	margin: 0 auto;
+
+	
+	h1 {
+		font-size: 3em;
+		text-transform: uppercase;
+		margin: 1em 0;
+	}
+	
+	.event {
+		position: relative;
+
+		h3 {
+			text-align: left;
+			font-size: 1.5em;
+			padding: .6em .5em;
+			text-transform: capitalize;
+		}
+
+		.date {
+			position: absolute;
+			top: 50%;
+			right: 1em;
+			font-size: 1em;
+			font-style: italic;
+			color: #eeeeee;
+		}
+	}
+	
+	.legend {
+		margin: 1em 0;
+		li {
+			width: 20%;
+			float: left;
+
+			.count {
+				padding: .6em;
+				text-transform: capitalize;
+			}
+		}
+	}
 }

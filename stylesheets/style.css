@@ -1,4 +1,4 @@
-/* line 5, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p545/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -66,4 +66,83 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 4, ../sass/style.scss */
 body {
   font-size: 62.5%;
+  font-family: "Open Sans", serif;
+  text-align: center;
+}
+
+/* line 10, ../sass/style.scss */
+.critical {
+  background-color: red;
+  color: white;
+}
+
+/* line 15, ../sass/style.scss */
+.major {
+  background-color: orangered;
+  color: white;
+}
+
+/* line 20, ../sass/style.scss */
+.medium {
+  background-color: orange;
+  color: white;
+}
+
+/* line 25, ../sass/style.scss */
+.warning {
+  background-color: #2C75DB;
+  color: white;
+}
+
+/* line 30, ../sass/style.scss */
+.indeterminate {
+  background-color: #29D4BA;
+  color: white;
+}
+
+/* line 35, ../sass/style.scss */
+.container {
+  padding: 1em 0;
+  width: 800px;
+  margin: 0 auto;
+}
+/* line 41, ../sass/style.scss */
+.container h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  margin: 1em 0;
+}
+/* line 47, ../sass/style.scss */
+.container .event {
+  position: relative;
+}
+/* line 50, ../sass/style.scss */
+.container .event h3 {
+  text-align: left;
+  font-size: 1.5em;
+  padding: .6em .5em;
+  text-transform: capitalize;
+}
+/* line 57, ../sass/style.scss */
+.container .event .date {
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  font-size: 1em;
+  font-style: italic;
+  color: #eeeeee;
+}
+/* line 67, ../sass/style.scss */
+.container .legend {
+  margin: 1em 0;
+}
+/* line 69, ../sass/style.scss */
+.container .legend li {
+  width: 20%;
+  float: left;
+}
+/* line 73, ../sass/style.scss */
+.container .legend li .count {
+  padding: .6em;
+  text-transform: capitalize;
 }

@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Design</title>
+	<title>Alarms</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 	<!--[if IE]>
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
     <link href="stylesheets/style.css" type="text/css" rel="stylesheet" >
+    <script type="template" id="events">
+		<% _.each(alarms, function(alarm) { %>
+			<li>
+				<div class="event <%= alarm.proiority%>">
+					<h3><%= alarm.summary%> @ <%= alarm.node %></h3>
+					<span class="date"><%= alarm.occurrence %></span>
+				</div>
+			</li>	
+		<% }); %>
+    </script>
+    <script type="template" id="legend">
+		<% _.each(legends, function(legend) { %>
+			<li>
+				<div class="count <%= legend.proiority %>">
+					<i class="alarm"></i>
+					<span><%= legend.proiority %>: <%= legend.count %></span>
+				</div>
+			</li>
+		<% }); %>			
+    </script>
 </head>
 <body>
+	<div class="container">
+		<h1>Active Event List in transmission</h1>
+		<ul class="events">
+		</ul>
+
+		<ul class="legend">
+		</ul>
+	</div>
 	
-	<h1>hello, world</h1>
-	<h1>你好，世界</h1>
-
-	<section>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, mollitia. Praesentium earum sequi sit eius impedit, id consequatur voluptate labore numquam? Placeat vero inventore cupiditate natus, temporibus, voluptates qui necessitatibus?</p>
-	</section>
-
+	<script src="scripts/libs/jquery.min.js"></script>
+	<script src="scripts/libs/underscore.js"></script>
+	<script src="scripts/app.js"></script>
 </body>
 </html>
