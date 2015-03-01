@@ -1,0 +1,11 @@
+node,summary,occurrence,proiority
+VIQ002,heartbeat failure,2/12/2015 01:23 AM,critical
+VIQ002,packages are rejected,2/12/2015 01:22 AM,major
+VIQ002,connection cannot be established,2/11/2015 01:23 AM,medium
+VIQ001,packages are rejected,2/11/2015 01:23 AM,warning
+VIQ001,connection cannot be established,2/09/2015 01:23 AM,medium
+VIQ001,packages are rejected,2/10/2015 01:23 AM,warning
+VIQ002,packages are rejected,1/12/2015 01:22 AM,major
+VIQ002,connection cannot be established,1/11/2015 01:23 AM,medium
+VIQ001,packages are rejected,2/01/2015 05:23 AM,warning
+VIQ001,health check status unknown,2/02/2015 03:23 AM,indeterminate
