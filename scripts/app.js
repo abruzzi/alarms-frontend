@@ -1,11 +1,3 @@
-var HeadingComponet = React.createClass({
-	render: function() {
-		return (
-			<h1>{this.props.title}</h1>
-		)
-	}
-});
-
 var EventComponent = React.createClass({
 	render: function() {
 		return (
@@ -17,71 +9,72 @@ var EventComponent = React.createClass({
 	}
 });
 
-var EventsComponent = React.createClass({
-	getInitialState: function() {
-		return {
-			events: []
-		}
-	},
-
-	componentDidMount: function() {
-		$.ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      success: function(alarms) {
-	      	this.setState({events: alarms});
-	      }.bind(this),
-	      error: function(xhr, status, err) {
-	      	console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
-	},
-
-	render: function() {
-	    return (
-	      <ul className="events">
-	        {this.state.events.map(function(event) {
-	          return <li><EventComponent data={event} /></li>;
-	        })}
-	      </ul>
-	    );
-	}
-});
-
 var LegendComponent = React.createClass({
 	render: function() {
 		return (
 			<div className={"count " + this.props.legend.proiority}>
 				<i className="alarm"></i>
-				<span>{this.props.legend.proiority} : {this.props.legend.count} ></span>
+				<span>{this.props.legend.proiority} : {this.props.legend.count} </span>
 			</div>
 		);
 	}
 });
 
-var LegendWrapperComponent = React.createClass({
-	render: function() {
-		var legends = this.props.legends;
-		return (
-			<ul className="legend">
-			{
-				legends.map(function(legend) {
-					return <li><LegendComponent legend={legend} /></li>
+var EventWrapperComponent = React.createClass({
+	getInitialState: function() {
+		return {
+			events: [],
+			legends: []
+		}
+	},
+
+	prepare: function(alarms) {
+		return {
+			events: _(alarms)
+				.sortBy("occurrence")
+				.reverse(),
+			legends: _.chain(alarms)
+				.groupBy("proiority")
+				.map(function(value, key) {
+					return {proiority: key, count: value.length};
 				})
-			}
-			</ul>
-		);
+				.value()
+		};
+	},
+
+	componentDidMount: function() {
+		var that = this;
+		$.get(this.props.url).done(function(alarms) {
+			that.setState(that.prepare(alarms));
+		});
+	},
+
+	render: function() {
+	    return (
+	    	<div>
+		      <ul className="events">
+		        {this.state.events.map(function(event) {
+		        	return <li><EventComponent data={event} /></li>;
+		        })}
+		      </ul>
+
+		      <ul className="legend">
+				{this.state.legends.map(function(legend) {
+					return <li><LegendComponent legend={legend} /></li>
+				})}
+			  </ul>
+			</div>
+	    );
 	}
 });
 
 var ResultComponent = React.createClass({
 	render: function() {
-		var legends = []
+		var legends = [];
 		return (
 			<div>
-				<HeadingComponet title="Active Event List in transmission"/>
-				<EventsComponent url="/alarms.json"/>
-				<LegendWrapperComponent legends={legends}/>
+				<h1>Active Event List in transmission</h1>
+				<EventWrapperComponent url="/alarms.json"/>
 			</div>
 		)
 	}
