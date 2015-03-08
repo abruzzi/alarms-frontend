@@ -8,39 +8,18 @@
 	    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
     <link href="stylesheets/style.css" type="text/css" rel="stylesheet" >
-    <script type="template" id="events">
-		<% _.each(alarms, function(alarm) { %>
-			<li>
-				<div class="event <%= alarm.proiority%>">
-					<h3><%= alarm.summary%> @ <%= alarm.node %></h3>
-					<span class="date"><%= alarm.occurrence %></span>
-				</div>
-			</li>	
-		<% }); %>
-    </script>
-    <script type="template" id="legend">
-		<% _.each(legends, function(legend) { %>
-			<li>
-				<div class="count <%= legend.proiority %>">
-					<i class="alarm"></i>
-					<span><%= legend.proiority %>: <%= legend.count %></span>
-				</div>
-			</li>
-		<% }); %>			
-    </script>
+
+	<script src="scripts/libs/react/react.js"></script>
+	<script src="scripts/libs/react/JSXTransformer.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="container">
 		<h1>Active Event List in transmission</h1>
-		<ul class="events">
-		</ul>
 
 		<ul class="legend">
 		</ul>
 	</div>
 	
-	<script src="scripts/libs/jquery.min.js"></script>
-	<script src="scripts/libs/underscore.js"></script>
-	<script src="scripts/app.js"></script>
+	<script type="text/jsx" src="scripts/app.js"></script>
 </body>
 </html>
