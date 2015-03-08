@@ -1,3 +1,11 @@
+var HeadingComponet = React.createClass({
+	render: function() {
+		return (
+			<h1>{this.props.title}</h1>
+		)
+	}
+});
+
 var EventComponent = React.createClass({
 	render: function() {
 		return (
@@ -9,11 +17,34 @@ var EventComponent = React.createClass({
 	}
 });
 
-var HeadingComponet = React.createClass({
+var EventsComponent = React.createClass({
+	getInitialState: function() {
+		return {
+			events: []
+		}
+	},
+
+	componentDidMount: function() {
+		$.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      success: function(alarms) {
+	      	this.setState({events: alarms});
+	      }.bind(this),
+	      error: function(xhr, status, err) {
+	      	console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+	},
+
 	render: function() {
-		return (
-			<h1>{this.props.title}</h1>
-		)
+	    return (
+	      <ul className="events">
+	        {this.state.events.map(function(event) {
+	          return <li><EventComponent data={event} /></li>;
+	        })}
+	      </ul>
+	    );
 	}
 });
 
@@ -28,125 +59,32 @@ var LegendComponent = React.createClass({
 	}
 });
 
-var EventsComponent = React.createClass({
+var LegendWrapperComponent = React.createClass({
 	render: function() {
-		var events = this.props.events;
-	    return (
-	      <ul className="events">
-	        {events.map(function(event) {
-	          return <li><EventComponent data={event} /></li>;
-	        })}
-	      </ul>
-	    );
+		var legends = this.props.legends;
+		return (
+			<ul className="legend">
+			{
+				legends.map(function(legend) {
+					return <li><LegendComponent legend={legend} /></li>
+				})
+			}
+			</ul>
+		);
 	}
 });
 
-// var heading = new HeadingComponet({"title": "Active Event List in transmission"});
-var events = [
-	{
-		"node": "VIQ002",
-		"summary": "heartbeat failure",
-		"occurrence": "2/12/2015 01:23 AM",
-		"proiority": "critical"
-	},
-	{
-		"node": "VIQ002",
-		"summary": "packages are rejected",
-		"occurrence": "2/12/2015 01:22 AM",
-		"proiority": "major"
-	},
-	{
-		"node": "VIQ002",
-		"summary": "connection cannot be established",
-		"occurrence": "2/11/2015 01:23 AM",
-		"proiority": "medium"
-	},
-	{
-		"node": "VIQ001",
-		"summary": "packages are rejected",
-		"occurrence": "2/11/2015 01:23 AM",
-		"proiority": "warning"
-	},
-	{
-		"node": "VIQ001",
-		"summary": "connection cannot be established",
-		"occurrence": "2/09/2015 01:23 AM",
-		"proiority": "medium"
-	},
-	{
-		"node": "VIQ001",
-		"summary": "packages are rejected",
-		"occurrence": "2/10/2015 01:23 AM",
-		"proiority": "warning"
-	},
-		{
-		"node": "VIQ002",
-		"summary": "packages are rejected",
-		"occurrence": "1/12/2015 01:22 AM",
-		"proiority": "major"
-	},
-	{
-		"node": "VIQ002",
-		"summary": "connection cannot be established",
-		"occurrence": "1/11/2015 01:23 AM",
-		"proiority": "medium"
-	},
-	{
-		"node": "VIQ001",
-		"summary": "packages are rejected",
-		"occurrence": "2/01/2015 05:23 AM",
-		"proiority": "warning"
-	},
-	{
-		"node": "VIQ001",
-		"summary": "health check status unknown",
-		"occurrence": "2/02/2015 03:23 AM",
-		"proiority": "indeterminate"
-	}
-];
-
 var ResultComponent = React.createClass({
 	render: function() {
+		var legends = []
 		return (
 			<div>
-				<HeadingComponet title={this.props.title}/>
-				<EventsComponent events={this.props.events}/>
+				<HeadingComponet title="Active Event List in transmission"/>
+				<EventsComponent url="/alarms.json"/>
+				<LegendWrapperComponent legends={legends}/>
 			</div>
 		)
 	}
 });
 
-React.render(new ResultComponent({
-	"title": "Active Event List in transmission",
-	"events": events
-}), document.getElementById("container"));
-
-// $(function() {
-// 	function update(container, key, data) {
-// 		var compiled = _.template($("#"+container).html());
-		
-// 		var obj = {};
-// 		obj[key] = data;
-
-// 		var html = compiled(obj);
-// 		$("."+container).html(html);
-// 	}
-
-// 	function updateEvents(alarms) {
-// 		var events = _(alarms).sortBy("occurrence").reverse();
-// 		update("events", "alarms", events);
-// 	}
-
-// 	function updateLegend(alarms) {
-// 		var legends = _.chain(alarms).groupBy("proiority").map(function(value, key) {
-// 			return {proiority: key, count: value.length};
-// 		}).value();
-
-// 		update("legend", "legends", legends);
-// 	}
-
-// 	$.get("/alarms.json").done(function(alarms) {
-// 		updateEvents(alarms);
-// 		updateLegend(alarms);
-// 	});
-// });
+React.render(new ResultComponent(), document.getElementById("container"));
